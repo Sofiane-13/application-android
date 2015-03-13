@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:layout_marginRight="46dp"
+        android:text="Regarder l&apos;historique" />
+
+    <TextView
+        android:id="@+id/txtnom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrer le nom de votre application" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculatrice" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calendrier" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Messagerie" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repertoire" />
+
+    <Button
+        android:id="@+id/buttsav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sauvegarder dans l&apos;historique" />
+
+    <Button
+        android:id="@+id/efface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Initialiser l&apos;historique" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="créer votre application" />
+
+</LinearLayout>
+
