@@ -20,26 +20,37 @@ public class Client_socket  extends MainActivity{
 	            String host = "localhost";
 	            int port = 25000;
 	            InetAddress address = InetAddress.getByName(host);
-	            socket = new Socket("192.168.1.2", port);
+	            socket = new Socket("192.168.1.4", port);
 	 
 	            //Send the message to the server
 	            OutputStream os = socket.getOutputStream();
 	            OutputStreamWriter osw = new OutputStreamWriter(os);
 	            BufferedWriter bw = new BufferedWriter(osw);
 	 
+
+	            String sendnom = ism + "\n";
+	            String sendcalculatrice = ca +"\n";
+                String sendcalendrier = cale +"\n" ;
+                String sendrepertoire = re +"\n" ;
+	            String sendmessagerie = m +"\n";
+
+	 
 	           
-	 
-	            String sendMessage = ism + "\n";
-	            bw.write(sendMessage);
+	            
+	            bw.write(sendnom);
+	            bw.write(sendcalculatrice);
+	            bw.write(sendcalendrier);
+	            bw.write(sendrepertoire);
+	            bw.write(sendmessagerie);
 	            bw.flush();
-	            System.out.println("Message sent to the server : "+sendMessage);
+	            System.out.println("Message sent to the server : "+sendnom);
+	            System.out.println("Message sent to the server : "+sendcalculatrice);
+	            System.out.println("Message sent to the server : "+sendcalendrier);
+	            System.out.println("Message sent to the server : "+sendrepertoire);
+	            System.out.println("Message sent to the server : "+sendmessagerie);
 	 
-	            //Get the return message from the server
-	            InputStream is = socket.getInputStream();
-	            InputStreamReader isr = new InputStreamReader(is);
-	            BufferedReader br = new BufferedReader(isr);
-	            String message = br.readLine();
-	            System.out.println("Message received from the server : " +message);
+	            
+	            
 	        }
 	        catch (Exception exception)
 	        {
