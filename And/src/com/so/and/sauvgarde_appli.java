@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
 
 import android.content.Context;
 import android.os.Environment;
-public class ModifyXMLDOM extends MainActivity {
+public class sauvgarde_appli extends MainActivity {
 	public static void lance(){
 		
 		
@@ -87,11 +87,11 @@ public class ModifyXMLDOM extends MainActivity {
             Element serviceElement4 = doc.createElement("calculatrice");
             Element serviceElement5 = doc.createElement("calendrier");
             
-            serviceElement1.appendChild(doc.createTextNode(ism));
-            serviceElement2.appendChild(doc.createTextNode(m));
-            serviceElement3.appendChild(doc.createTextNode(re));
-            serviceElement4.appendChild(doc.createTextNode(ca));
-            serviceElement5.appendChild(doc.createTextNode(cale));
+            serviceElement1.appendChild(doc.createTextNode(nom_application));
+            serviceElement2.appendChild(doc.createTextNode(string_messagerie));
+            serviceElement3.appendChild(doc.createTextNode(string_repertoire));
+            serviceElement4.appendChild(doc.createTextNode(string_calculatrice));
+            serviceElement5.appendChild(doc.createTextNode(string_calendrier));
             
             appliElement.appendChild(serviceElement1);
             appliElement.appendChild(serviceElement2);

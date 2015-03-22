@@ -2,13 +2,16 @@ package com.so.and;
 
 
 
+
+
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,111 +19,95 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 
 public class MainActivity extends Activity implements OnClickListener {
-	public static String ism;
 	
 	
-	CheckBox msg,rep,calen,cal;
-	static String m="0",re="0",cale="0",ca="0";
-Button btn;
+	RadioButton rb_ApiLocal,rb_Api19,rb_Api20,rb_Api21;
+	CheckBox box_messagerie,box_repertoire,box_calendrier,box_calculatrice;
+	Button btn_historique;
+	public static String string_messagerie="0",string_repertoire="0",string_calendrier="0",string_calculatrice="0",nom_application,api;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        initInterface();
+        CheckExistence_historique();
+        Synchroniserbox();
+      
+        btn_historique.setOnClickListener(this);
         
-        btn = (Button) findViewById(R.id.but);
-        btn.setOnClickListener(this);
-       
-     
-		cal = (CheckBox) findViewById(R.id.checkBox1);
-		calen = (CheckBox) findViewById(R.id.checkBox2);
-		msg = (CheckBox) findViewById(R.id.checkBox3);
-		rep = (CheckBox) findViewById(R.id.checkBox4);
-		EditText et =(EditText)findViewById(R.id.editText1);
-		et.setText(ism);
-		//test
-		System.out.println("ism="+ism);
-		System.out.println("m="+m);
-		System.out.println("re="+re);
-		System.out.println("cale="+cale);
-		System.out.println("ca="+ca);
-		//test
-		
-		if(m.equals("1"))msg.setChecked(true);else  msg.setChecked(false);
-		if(re.equals("1"))rep.setChecked(true);else  rep.setChecked(false);
-		if(cale.equals("1"))calen.setChecked(true);else  calen.setChecked(false);
-		if(ca.equals("1"))cal.setChecked(true);else cal.setChecked(false);
-		
-		addButtonClickListner();
+        addButtonClickListner();
 		
     }
     
     public void addButtonClickListner() {
-		Button btnNavigator = (Button)findViewById(R.id.button1);
+    	
+    	Button btn1 = (Button)findViewById(R.id.btncree);
 		Button btn2 = (Button) findViewById(R.id.buttsav);
-		Button btn3 = (Button) findViewById(R.id.efface);
+		Button btn3 = (Button) findViewById(R.id.effacer);
+		Button btn4 = (Button) findViewById(R.id.installer);
+		
+		//nos quatre bouton
+		
+        btn4.setOnClickListener(new OnClickListener() {
+			
+			//le bouton pour installer
+			@Override
+			
+			public void onClick(View v) {
+				installer_apk();
+				
+			}
+		});
+		
 		btn3.setOnClickListener(new OnClickListener() {
 			
-			//le button effacer l'historique l'historique
+			//le bouton pour effacer  l'historique
 			@Override
 			public void onClick(View v) {
 				Initial_historique.lance();
 				
 			}
 		});
+		
 		btn2.setOnClickListener(new OnClickListener() {
 			
-			//le button sauvgarder dans l'historique un nv element
+			//le bouton sauvgarder dans l'historique un nouveau element
 			@Override
 			public void onClick(View v) {
+				//Lire les informations sur l'activity
+				Lire_informations();
 				
-				EditText et =(EditText)findViewById(R.id.editText1);
-				ism = et.getText().toString();
-				if(cal.isChecked())ca="1"; else ca="0";
-				if(calen.isChecked())cale="1"; else cale ="0";
-				if(msg.isChecked())m="1"; else m="0";
-				if(rep.isChecked())re="1"; else re = "0";
-				
-				
-				ModifyXMLDOM.lance();
+				//Sauvgarder l'application dans le fichier historique
+				sauvgarde_appli.lance();
 				
 				
 			}
 		});
 		
-		btnNavigator.setOnClickListener(new OnClickListener() {
+		btn1.setOnClickListener(new OnClickListener() {
 			
-			//button crée votre application
+			//le bouton pour crée votre application
 			@Override
 			public void onClick(View arg) {
-				// TODO Auto-generated method stub
 				
-				EditText et =(EditText)findViewById(R.id.editText1);
-				ism = et.getText().toString();
-				
-				
-				
-				if(cal.isChecked())ca="1";else ca="0";
-				if(calen.isChecked())cale="1";else cale ="0";
-				if(msg.isChecked())m="1";else m="0";
-				if(rep.isChecked())re="1"; else re = "0";
+				//Lire les informations sur l'activity
+				Lire_informations();
 			
-				xml_envoyer.lance();
-				// apel au thread
-				new Thread(new Runnable() {
-			        @Override
-			        public void run() {
-			            Client_socket.lance(); // call your network method here
-			        }
-			    }).start();
+				xml_envoyer.lance();//xml des informations
 				
-				
-				//appel au thread
-				
+				// appel au thread pour envoyer les informations début
+				Envoyer_information();
+								
+				// appel au thread pour recevoire apk début
+				Recevoire_apk();
+								
 			}
 		});
 	}
@@ -151,4 +138,74 @@ Button btn;
 	
 		startActivity(myintent);
 	}
+	private void initInterface() {
+		/*Ici vousdevez faire toute les associations entre l'interface 
+		 * et le code cource
+		 * */
+		
+		    box_calculatrice = (CheckBox) findViewById(R.id.checkBox1);
+			box_calendrier = (CheckBox) findViewById(R.id.checkBox2);
+			box_messagerie = (CheckBox) findViewById(R.id.checkBox3);
+			box_repertoire = (CheckBox) findViewById(R.id.checkBox4);
+			btn_historique = (Button) findViewById(R.id.but);
+			
+	}
+	private void CheckExistence_historique() {
+		
+		//check Existence historique début
+        try {
+			FileCheckExistence.lance();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //check Existence historique fin
+	}
+	private void Synchroniserbox() {
+		
+		//synchroniser les checkbox début
+		EditText et =(EditText)findViewById(R.id.editText1);
+		et.setText(nom_application);
+		if(string_messagerie.equals("1"))box_messagerie.setChecked(true);else  box_messagerie.setChecked(false);
+		if(string_repertoire.equals("1"))box_repertoire.setChecked(true);else  box_repertoire.setChecked(false);
+		if(string_calendrier.equals("1"))box_calendrier.setChecked(true);else  box_calendrier.setChecked(false);
+		if(string_calculatrice.equals("1"))box_calculatrice.setChecked(true);else box_calculatrice.setChecked(false);
+		
+		
+	}
+	private void Lire_informations() {
+		EditText et =(EditText)findViewById(R.id.editText1);
+		nom_application = et.getText().toString();
+		if(box_calculatrice.isChecked())string_calculatrice="1"; else string_calculatrice="0";
+		if(box_calendrier.isChecked())string_calendrier="1"; else string_calendrier ="0";
+		if(box_messagerie.isChecked())string_messagerie="1"; else string_messagerie="0";
+		if(box_repertoire.isChecked())string_repertoire="1"; else string_repertoire = "0";
+	}
+	private void Envoyer_information() {
+		new Thread(new Runnable() {
+	        @Override
+	        public void run() {
+	            envoyer_informations.lance(); // call your network method here
+	        }
+	    }).start();
+	}
+	
+	private void Recevoire_apk() {
+		
+		new Thread(new Runnable() {
+	        @Override
+	        public void run() {
+	          
+	        	recevoire_apk.lancer();
+				
+	        }   
+	          }).start();
+	}
+	private void installer_apk(){
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+	    intent.setDataAndType(Uri.fromFile(new File("/data/data/com.so.and/sofiane.apk")), "application/vnd.android.package-archive");
+	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    startActivity(intent);
+	}
+	
 }

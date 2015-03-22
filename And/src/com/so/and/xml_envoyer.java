@@ -33,17 +33,17 @@ public class xml_envoyer extends MainActivity {
             //append root element to document
             doc.appendChild(rootElement);
           //append first child element to root element
-            rootElement.appendChild(getSerElements(doc, rootElement, "name", ism));
+            rootElement.appendChild(getSerElements(doc, rootElement, "name", nom_application));
  
             //append first child element to root element
-            rootElement.appendChild(getService(doc, "1", "calendrier", cale));
+            rootElement.appendChild(getService(doc, "1", "calendrier", string_calendrier));
  
             //append second child
-            rootElement.appendChild(getService(doc, "2", "message", m));
+            rootElement.appendChild(getService(doc, "2", "message", string_messagerie));
             //append truism  child
-            rootElement.appendChild(getService(doc, "3", "repertoire", re));
+            rootElement.appendChild(getService(doc, "3", "repertoire", string_repertoire));
             //append second child
-            rootElement.appendChild(getService(doc, "4", "calculatrice", ca));
+            rootElement.appendChild(getService(doc, "4", "calculatrice", string_calculatrice));
  
             //for output to file, console
             TransformerFactory transformerFactory = TransformerFactory.newInstance();

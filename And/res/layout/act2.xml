@@ -11,7 +11,7 @@
         android:text="L&apos;historique" />
 
     <Button
-        android:id="@+id/le2"
+        android:id="@+id/retoure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Retour vers le menu principale " />
