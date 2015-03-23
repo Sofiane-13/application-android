@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/image2">
 
     <Button
         android:id="@+id/but"
@@ -62,25 +63,25 @@
         android:id="@+id/radio1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Local API"
+        android:text="API 19"
         />
         <RadioButton
         android:id="@+id/radio2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 19"
+        android:text="API 20"
         />
          <RadioButton
         android:id="@+id/radio3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 20"
+        android:text="API 21"
         />
          <RadioButton
         android:id="@+id/radio4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 21"
+        android:text="API 22"
         />
         </RadioGroup>
 
@@ -94,7 +95,7 @@
         android:id="@+id/effacer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Initialiser l&apos;historique" />
+        android:text="Effacer l&apos;historique" />
 
     <Button
         android:id="@+id/btncree"

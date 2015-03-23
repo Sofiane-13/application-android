@@ -64,6 +64,7 @@ public class Act2 extends MainActivity implements OnClickListener {
 	    		 string_repertoire=Tableau.getrepertoire(position);
 	    		 string_calendrier=Tableau.getcalendrier(position);
 	    		 string_calculatrice=Tableau.getcalculatrice(position);
+	    		 api=Tableau.getAPI(position);
 	    		
 	    		 if(string_messagerie.equals("1"))choix1="choisie";else choix1="non choisie";
 	    		 if(string_repertoire.equals("1"))choix2="choisie";else choix2="non choisie";
@@ -72,8 +73,8 @@ public class Act2 extends MainActivity implements OnClickListener {
 	    		 
 	    		 
 
-	    		 Toast.makeText(Act2.this, "nom: ["+clickedView.getText()+"] -repertoire: ["+choix2+"]-calendrier: ["+choix3+"]-calculatrice: ["+choix4+"]-messagerie: ["+choix1+"]", Toast.LENGTH_LONG).show();
-	    		 Toast.makeText(Act2.this, "nom: ["+clickedView.getText()+"] -repertoire: ["+choix2+"]-calendrier: ["+choix3+"]-calculatrice: ["+choix4+"]-messagerie: ["+choix1+"]", Toast.LENGTH_LONG).show();
+	    		 Toast.makeText(Act2.this, "nom: ["+clickedView.getText()+"] -repertoire: ["+choix2+"]-calendrier: ["+choix3+"]-calculatrice: ["+choix4+"]-messagerie: ["+choix1+"]-API: ["+api+"]", Toast.LENGTH_LONG).show();
+	    		 Toast.makeText(Act2.this, "nom: ["+clickedView.getText()+"] -repertoire: ["+choix2+"]-calendrier: ["+choix3+"]-calculatrice: ["+choix4+"]-messagerie: ["+choix1+"]-API: ["+api+"]", Toast.LENGTH_LONG).show();
 	    		  	    	
 	    	}});
 		

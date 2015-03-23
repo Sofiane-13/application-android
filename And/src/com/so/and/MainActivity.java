@@ -20,15 +20,18 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnClickListener {
 	
 	
-	RadioButton rb_ApiLocal,rb_Api19,rb_Api20,rb_Api21;
+	RadioButton radiobtn_19,radiobtn_20,radiobtn_21,radiobtn_22;
+	RadioGroup radiogroup;
 	CheckBox box_messagerie,box_repertoire,box_calendrier,box_calculatrice;
 	Button btn_historique;
-	public static String string_messagerie="0",string_repertoire="0",string_calendrier="0",string_calculatrice="0",nom_application,api;
+	public static String string_messagerie="0",string_repertoire="0",string_calendrier="0",string_calculatrice="0",nom_application,api="19";
 
 
     @Override
@@ -100,7 +103,6 @@ public class MainActivity extends Activity implements OnClickListener {
 				//Lire les informations sur l'activity
 				Lire_informations();
 			
-				xml_envoyer.lance();//xml des informations
 				
 				// appel au thread pour envoyer les informations début
 				Envoyer_information();
@@ -142,12 +144,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		/*Ici vousdevez faire toute les associations entre l'interface 
 		 * et le code cource
 		 * */
-		
+		    		
 		    box_calculatrice = (CheckBox) findViewById(R.id.checkBox1);
 			box_calendrier = (CheckBox) findViewById(R.id.checkBox2);
 			box_messagerie = (CheckBox) findViewById(R.id.checkBox3);
 			box_repertoire = (CheckBox) findViewById(R.id.checkBox4);
 			btn_historique = (Button) findViewById(R.id.but);
+			radiobtn_19 = (RadioButton) findViewById(R.id.radio1);
+			radiobtn_20 = (RadioButton) findViewById(R.id.radio2);
+			radiobtn_21 = (RadioButton) findViewById(R.id.radio3);
+			radiobtn_22 = (RadioButton) findViewById(R.id.radio4);
 			
 	}
 	private void CheckExistence_historique() {
@@ -170,6 +176,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		if(string_repertoire.equals("1"))box_repertoire.setChecked(true);else  box_repertoire.setChecked(false);
 		if(string_calendrier.equals("1"))box_calendrier.setChecked(true);else  box_calendrier.setChecked(false);
 		if(string_calculatrice.equals("1"))box_calculatrice.setChecked(true);else box_calculatrice.setChecked(false);
+		if(api.equals("19"))radiobtn_19.setChecked(true);
+		else if(api.equals("20"))radiobtn_20.setChecked(true);
+		     else if(api.equals("21"))radiobtn_21.setChecked(true); 
+		          else if(api.equals("22"))radiobtn_22.setChecked(true); 
 		
 		
 	}
@@ -180,6 +190,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		if(box_calendrier.isChecked())string_calendrier="1"; else string_calendrier ="0";
 		if(box_messagerie.isChecked())string_messagerie="1"; else string_messagerie="0";
 		if(box_repertoire.isChecked())string_repertoire="1"; else string_repertoire = "0";
+		if(radiobtn_19.isChecked())api="19";
+		else if (radiobtn_20.isChecked())api="20";
+		     else if(radiobtn_21.isChecked())api="21";
+		           else if(radiobtn_22.isChecked())api="22";
 	}
 	private void Envoyer_information() {
 		new Thread(new Runnable() {

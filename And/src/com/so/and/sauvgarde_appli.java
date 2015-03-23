@@ -86,18 +86,21 @@ public class sauvgarde_appli extends MainActivity {
             Element serviceElement3 = doc.createElement("repertoire");
             Element serviceElement4 = doc.createElement("calculatrice");
             Element serviceElement5 = doc.createElement("calendrier");
+            Element serviceElement6 = doc.createElement("API");
             
             serviceElement1.appendChild(doc.createTextNode(nom_application));
             serviceElement2.appendChild(doc.createTextNode(string_messagerie));
             serviceElement3.appendChild(doc.createTextNode(string_repertoire));
             serviceElement4.appendChild(doc.createTextNode(string_calculatrice));
             serviceElement5.appendChild(doc.createTextNode(string_calendrier));
+            serviceElement6.appendChild(doc.createTextNode(api));
             
             appliElement.appendChild(serviceElement1);
             appliElement.appendChild(serviceElement2);
             appliElement.appendChild(serviceElement3);
             appliElement.appendChild(serviceElement4);
             appliElement.appendChild(serviceElement5);
+            appliElement.appendChild(serviceElement6);
             
             emp.appendChild(appliElement);
         }

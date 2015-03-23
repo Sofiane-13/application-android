@@ -10,7 +10,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 public class Tableau extends Act2 {
-	static String application[][] = new String[1000][5];
+	static String application[][] = new String[1000][6];
 	public static void lance(){
 		
 		int i=0;
@@ -63,6 +63,9 @@ public class Tableau extends Act2 {
 
 						application[i][4]= eElement.getElementsByTagName("calendrier").item(0).getTextContent();
 						System.out.println(application[i][4]);
+						
+						application[i][5]= eElement.getElementsByTagName("API").item(0).getTextContent();
+						System.out.println(application[i][5]);
 					
 					  }
 					  i++;}
@@ -81,11 +84,15 @@ public class Tableau extends Act2 {
 	public static String getrepertoire(int position){
 		return application[position][2];
 	}
+	public static String getcalculatrice(int position){
+		return application[position][3];
+	}
 	public static String getcalendrier(int position){
 		return application[position][4];
 	}
-	public static String getcalculatrice(int position){
-		return application[position][3];
+	
+	public static String getAPI(int position){
+		return application[position][5];
 	}
 		
 		
