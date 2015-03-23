@@ -20,7 +20,7 @@ public class envoyer_informations  extends MainActivity{
 	            String host = "localhost";
 	            int port = 25000;
 	            InetAddress address = InetAddress.getByName(host);
-	            socket = new Socket("192.168.1.5", port);
+	            socket = new Socket(String_IP, port);
 	 
 	            //Send the message to the server
 	            OutputStream os = socket.getOutputStream();

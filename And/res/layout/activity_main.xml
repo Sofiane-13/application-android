@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+<LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
@@ -7,11 +10,11 @@
 
     <Button
         android:id="@+id/but"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="41dp"
         android:layout_marginRight="46dp"
-        android:text="Regarder l&apos;historique" />
+        android:text="REGARDER L&apos;HISTORIQUE" />
 
     <TextView
         android:id="@+id/txtnom"
@@ -63,25 +66,25 @@
         android:id="@+id/radio1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 19"
+        android:text="LOCAL API"
         />
         <RadioButton
         android:id="@+id/radio2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 20"
+        android:text="API 19"
         />
          <RadioButton
         android:id="@+id/radio3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 21"
+        android:text="API 20"
         />
          <RadioButton
         android:id="@+id/radio4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="API 22"
+        android:text="API 21"
         />
         </RadioGroup>
 
@@ -89,27 +92,42 @@
         android:id="@+id/buttsav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sauvegarder dans l&apos;historique" />
+        android:text="SAUVGEARDER DANS L&apos;HISTORIQUE" />
 
     <Button
         android:id="@+id/effacer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EFFACER L&apos;HISTORIQUE" />
+
+    <TextView
+        android:id="@+id/txtop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Effacer l&apos;historique" />
+        android:text="Entrer le IP du serveur" />
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
 
+        <requestFocus />
+    </EditText>
+    
     <Button
         android:id="@+id/btncree"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="créer votre application" />
+        android:text="CREER VOTRE APPLICATION" />
 
     <Button
         android:id="@+id/installer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="installer " />
+        android:text="INSTALLER" />
     
  
 
 </LinearLayout>
 
+</ScrollView>

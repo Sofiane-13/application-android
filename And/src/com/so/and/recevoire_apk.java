@@ -12,10 +12,12 @@ public class recevoire_apk extends MainActivity {
 		
      new Thread(new Runnable() {
    
-    	@Override
+    	private Socket s;
+
+		@Override
     public void run() {
       try{
-	Socket s = new Socket("192.168.1.5", 4000) ;
+	s = new Socket(String_IP, 4000);
 
 	ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
 	
