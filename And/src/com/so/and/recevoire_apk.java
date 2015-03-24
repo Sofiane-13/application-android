@@ -1,10 +1,13 @@
 package com.so.and;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import android.os.Environment;
 
 public class recevoire_apk extends MainActivity {
 	
@@ -21,14 +24,11 @@ public class recevoire_apk extends MainActivity {
 
 	ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
 	
-	
-		
-	
 	byte [] buffer = (byte[]) ois.readObject();
-	FileOutputStream fos = new FileOutputStream("/data/data/com.so.and/sofiane.apk");
+	FileOutputStream fos = new FileOutputStream("/data/data/com.so.and/app.apk");
 	fos.write(buffer);
 	
-	
+
 	}catch (ClassNotFoundException e){
         e.printStackTrace();	
     } catch (IOException e) {

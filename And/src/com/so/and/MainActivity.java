@@ -6,6 +6,7 @@ package com.so.and;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Permission;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -65,6 +66,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			@Override
 			
 			public void onClick(View v) {
+				
+			    Chmod.lancer();
 				installer_apk();
 				
 			}
@@ -221,10 +224,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	          }).start();
 	}
 	private void installer_apk(){
+		
+		
 		Intent intent = new Intent(Intent.ACTION_VIEW);
-	    intent.setDataAndType(Uri.fromFile(new File("/data/data/com.so.and/sofiane.apk")), "application/vnd.android.package-archive");
-	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	    startActivity(intent);
+		intent.setDataAndType(Uri.fromFile(new File("/data/data/com.so.and/app.apk")),"application/vnd.android.package-archive");
+		startActivity(intent);
 	}
 	
 }
