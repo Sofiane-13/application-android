@@ -1,13 +1,16 @@
 package com.so.and;
 
+import android.annotation.SuppressLint;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+
+@SuppressLint("SdCardPath")
 public class Chmod {
 	 public static void lancer() {
 
-		    String[] args2 = { "chmod", "604", "/data/data/com.so.and/sofiane.apk" };
+		    String[] args2 = { "chmod", "604", "/data/data/com.so.and/app.apk" };
 		    exec(args2);
 		}
 		    public static String exec(String[] args) {

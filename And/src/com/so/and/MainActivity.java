@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.Permission;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,7 +25,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-
+@SuppressLint("SdCardPath")
 public class MainActivity extends Activity implements OnClickListener {
 	
 	
@@ -67,8 +68,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			public void onClick(View v) {
 				
+				//ajouter la permission pour éxécuter le apk 
 			    Chmod.lancer();
+			    
+			    //lancer l'instalation du apk
 				installer_apk();
+				
 				
 			}
 		});
@@ -110,7 +115,10 @@ public class MainActivity extends Activity implements OnClickListener {
 				
 				// appel au thread pour envoyer les informations début
 				Envoyer_information();
-								
+							
+				//on supprime l'ancien apk
+				suprim_apk();
+				
 				// appel au thread pour recevoire apk début
 				Recevoire_apk();
 								
@@ -230,5 +238,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		intent.setDataAndType(Uri.fromFile(new File("/data/data/com.so.and/app.apk")),"application/vnd.android.package-archive");
 		startActivity(intent);
 	}
-	
+	private void suprim_apk(){
+		File file = new File("/data/data/com.so.and/app.apk");
+		boolean supp = file.delete();
+	}
 }
